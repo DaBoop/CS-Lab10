@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Lab10
 {
     class Program
     {
+        static void Reaction(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            Console.WriteLine("Collection changed: " + e.Action);
+        }
         static void Main(string[] args)
         {
             // =========
@@ -58,16 +64,26 @@ namespace Lab10
 
             Console.WriteLine();
 
-            Predicate<int> func = delegate (int x) // 4
+            Predicate<int> func = delegate (int x)
             {
                 return x > 0;
             };
             Console.WriteLine(list2.Find(func));
-            Console.Write(list2.FindIndex(0,func));
+            Console.WriteLine(list2.FindIndex(0,func));
 
             // =========
             // 3
             // =========
+
+            var obsColl = new ObservableCollection<Image>();
+
+           
+            obsColl.CollectionChanged += Reaction;
+            obsColl.Add(air);
+            obsColl.Add(fire);
+            obsColl.Remove(fire);
         }
+
+       
     }
 }
