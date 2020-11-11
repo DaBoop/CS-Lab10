@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Lab10
 {
@@ -6,6 +8,10 @@ namespace Lab10
     {
         static void Main(string[] args)
         {
+            // =========
+            // 1
+            // =========
+
             Image air, fire;
             Image[] imgArr =
                 {
@@ -22,6 +28,46 @@ namespace Lab10
             Console.WriteLine(imgList);
             Console.WriteLine(imgList.Find(air));
 
+            // =========
+            // 2
+            // =========
+
+            var list1 = new LinkedList<int>();
+            list1.AddLast(0);
+            list1.AddLast(1);
+            list1.AddLast(2);
+            list1.AddLast(3);
+            list1.AddLast(4);
+
+            int n = 3;
+
+            for (int i = 0; i < n; i++)
+                list1.RemoveLast();
+
+            list1.AddFirst(-2);
+            list1.AddAfter(list1.First, -1);
+            list1.AddBefore(list1.First, -3);
+
+
+            var list2 = new List<int>(list1);
+
+            foreach (int item in list2)
+            {
+                Console.Write(item + " ");
+            }
+
+            Console.WriteLine();
+
+            Predicate<int> func = delegate (int x) // 4
+            {
+                return x > 0;
+            };
+            Console.WriteLine(list2.Find(func));
+            Console.Write(list2.FindIndex(0,func));
+
+            // =========
+            // 3
+            // =========
         }
     }
 }
