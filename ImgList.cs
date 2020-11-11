@@ -55,7 +55,7 @@ namespace Lab10
 
         public int Count => imgList.Count;
 
-        public bool IsReadOnly => true;
+        public bool IsReadOnly => false;
 
         public bool Add(Image item)
         {
