@@ -238,7 +238,10 @@ namespace Lab10
 
         public override string ToString()
         {
-            return base.ToString();
+            string s = "";
+            foreach (Image item in imgList)
+                s += item + " ";
+            return s;
         }
 
         public void UnionWith(IEnumerable<Image> other)

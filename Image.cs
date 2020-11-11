@@ -24,5 +24,10 @@ namespace Lab10
                 height = height * y;
             }
         }
+
+       public override string ToString()
+        {
+            return $"{name}.{compression}({width}x{height})";
+        }
     }
 }
