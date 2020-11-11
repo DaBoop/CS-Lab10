@@ -10,7 +10,14 @@ namespace Lab10
     {
        
         LinkedList<Image> imgList = new LinkedList<Image>();
-       
+
+        public ImgList() { }
+        public ImgList(params Image[] values)
+        {
+            foreach (Image item in values) 
+                Add(item);
+        }
+
         public Image this[int i]
         {
             get
